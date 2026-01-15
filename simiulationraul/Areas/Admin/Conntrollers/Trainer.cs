@@ -9,7 +9,7 @@ using simiulationraul.Models;
 using simiulationraul.DAL;
 using simiulationraul.Models;
 
-namespace Simulation_Ticket_16.Areas.Admin.Controllers
+namespace simiulationraul.Areas.Admin.Controllers
 {
 	[Area("Admin")]
 	public class TrainerController : Controller
@@ -50,9 +50,9 @@ namespace Simulation_Ticket_16.Areas.Admin.Controllers
 			Trainer trainer = new Trainer()
 			{
 				Name = createTrainerVM.Name,
-				Job = createTrainerVM.Job,
+				Title = createTrainerVM.Title,
 				Description = createTrainerVM.Description,
-				Image = await createTrainerVM.Photo.CreateFile(_env.WebRootPath, "images"),
+				Image = await createTrainerVM.Photo.CreateFile(_env.WebRootPath, "assets", "images"),
 			};
 			await _context.Trainers.AddAsync(trainer);
 			await _context.SaveChangesAsync();
@@ -76,7 +76,7 @@ namespace Simulation_Ticket_16.Areas.Admin.Controllers
 			UpdateTrainerVM updateTrainerVM = new UpdateTrainerVM()
 			{
 				Name = trainer.Name,
-				Job = trainer.Job,
+				Title = trainer.Title,
 				Description = trainer.Description,
 				Image = trainer.Image
 			};
@@ -102,11 +102,11 @@ namespace Simulation_Ticket_16.Areas.Admin.Controllers
 					ModelState.AddModelError("Photo", "Faylın ölçüsü maksimum 2MB olmalıdır!");
 					return View();
 				}
-				string fileName = await updateTrainerVM.Photo.CreateFile(_env.WebRootPath, "images");
+				string fileName = await updateTrainerVM.Photo.CreateFile(_env.WebRootPath,"assets", "images");
 				trainer.Image = fileName;
 			}
 			trainer.Name = updateTrainerVM.Name;
-			trainer.Job = updateTrainerVM.Job;
+			trainer.Title = updateTrainerVM.Title;
 			trainer.Description = updateTrainerVM.Description;
 			await _context.SaveChangesAsync();
 			return RedirectToAction("Index");
@@ -135,7 +135,7 @@ namespace Simulation_Ticket_16.Areas.Admin.Controllers
 			{
 				return NotFound();
 			}
-			trainer.Image.DeleteFile(_env.WebRootPath, "images");
+			trainer.Image.DeleteFile(_env.WebRootPath,"assets", "images");
 			_context.Trainers.Remove(trainer);
 			await _context.SaveChangesAsync();
 			return RedirectToAction("Index");

@@ -1,6 +1,5 @@
-﻿@using simiulationraul.ViewModels
-@using simiulationraul.Models
-@model TrainerVM
+﻿@using simiulationraul.Models
+@model List<Trainer>
 <!-- =========================
 	HOME SECTION
 ============================== -->
@@ -60,7 +59,7 @@
 			</div>
 
 
-			@foreach(Trainer trainer in Model.Trainers)
+			@foreach(Trainer trainer in Model)
 			{
 
 				<div class="wow fadeInUp col-md-4 col-sm-6" data-wow-delay="1.9s">

@@ -1,0 +1,38 @@
+﻿﻿@using simiulationraul.Areas.Admin.ViewModels
+@model CreateTrainerVM
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Default form</h4>
+                <p class="card-description">
+                    Add trainer
+                </p>
+                <form method="post" enctype="multipart/form-data" class="forms-sample">
+                    <div class="form-group">
+                        <label for="Photo">Image</label>
+                        <input asp-for="Photo" class="form-control" id="Photo" placeholder="Image">
+                        <span asp-validation-for="Photo" style="color:red"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="Name">Name</label>
+                        <input asp-for="Name" class="form-control" id="Name" placeholder="Name">
+                        <span asp-validation-for="Name" style="color:red"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="Title">Title</label>
+                        <input asp-for="Title" class="form-control" id="Title" placeholder="Title">
+                        <span asp-validation-for="Title" style="color:red"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="Description">Description</label>
+                        <textarea asp-for="Description" class="form-control" id="Description" placeholder="Description"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>

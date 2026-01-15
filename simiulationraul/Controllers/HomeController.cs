@@ -17,12 +17,9 @@ namespace simiulationraul.Controllers
 
         public IActionResult Index()
         {
-            TrainerVM trainerVM = new TrainerVM() 
-            {
-                Trainers = _context.Trainers.ToList(),
-            };
+            List<Trainer> trainers = _context.Trainers.ToList();
 
-            return View(trainerVM);
+            return View(trainers);
         }
     }
 }

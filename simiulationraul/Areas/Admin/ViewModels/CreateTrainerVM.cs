@@ -9,7 +9,7 @@ namespace simiulationraul.Areas.Admin.ViewModels
 		public string Description { get; set; }
 
 		[MaxLength(12, ErrorMessage = "Max 20 symbol")]
-		public string Job { get; set; }
+		public string Title { get; set; }
 
 		public IFormFile Photo { get; set; }
 	}
